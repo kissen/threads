@@ -87,6 +87,9 @@ int queue_enqueue(QUEUE *queue, TCB *elem)
 TCB *queue_dequeue(QUEUE *queue)
 {
     struct node *old_head = queue->head;
+    if (old_head == NULL || queue->size == 0) {
+        return NULL;
+    }
     queue->head = queue->head->next;
     queue->size -= 1;
 
